@@ -7,4 +7,9 @@ console.log('router loaded');
 
 router.get('/',homeConroller.home);
 
+// for any further routes, access from here
+// router.use('/routerName', require('/routerFileName'));
+router.use('/users', require('./users'));
+router.use('/users', require('./post'));
+
 module.exports = router;
