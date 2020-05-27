@@ -1,10 +1,12 @@
+<link rel="stylesheet" href="/css/home.css">
 
-<h1>
+<!-- <h1>
     Codeial / <%= title %>
-</h1>
+</h1> -->
 
 
 <section id="feed-posts">
+    <div id="new-post">
     <h4>Posts</h4>
     <% if(locals.user) { %>
     <form action="/posts/create" id="new-post-form" method="POST">
@@ -12,43 +14,45 @@
         <input type="submit" value="Post">
     </form>
     <% } %>
+    </div>   
 
     <div id="posts-list-container">
         
         <ul>
             <% for(post of posts){ %> 
                 
-            <li>
-                <p>
+            <li class="container">
+                <a href="/users/profile">
+                    <h3> <%= post.user.name %> </h3>
+                </a>
+                <div class="post-container-content">
                     <%= post.content %>
-                    <br>
-                    <small>
-                        <%= post.user.name %>
-                    </small>
-                </p>
+                </div>
 
-                <div class="post-container">
-                    <% if(locals.user) { %>
-                    <form action="comments/create" method="POST">
-                        <input type="text" name="content" placeholder="Type here to add comments...">
-                        <input type="hidden" name="post" value="<%= post._id %>">
-                        <input type="submit" value="Add Comment">
-                    </form>
-                    <% } %>
-
-                    <div class="post-comments-list">
+                <div class="post-comments-list">
                         <ul id="post-comments-<%= post._id %>">
                             <% for (comments of post.comments) { %>
-                                <p>
+                                <li>
+                                <span class="comment-user">
+                                    <a href="/users/profile"> <%= comments.user.name %> </a>
+                                </span>
+                                <span class="comment-content">
                                     <%= comments.content %>
-                                    <br>
-                                    <small>
-                                        <%= comments.user.name %>
-                                    </small>
-                                </p>
+                                </span>
+                            </li>
                             <% } %>
+                            <br>
                         </ul>
-                    </div>
+                </div>
+
+                <div class="post-container-footer">
+                    <% if(locals.user) { %>
+                        <form action="comments/create" method="POST">
+                            <input class="comment-input" type="text" name="content" placeholder="Add a comment...">
+                            <input type="hidden" name="post" value="<%= post._id %>">
+                            <input type="submit" value="post">
+                        </form>
+                    <% } %>
                 </div>
                 
             </li>

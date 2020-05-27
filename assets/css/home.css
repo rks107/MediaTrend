@@ -1,0 +1,104 @@
+#feed-posts #new-post {
+  display: block;
+  width: 80vw;
+  margin: 20px auto;
+}
+
+#feed-posts #new-post h4 {
+  text-align: center;
+}
+
+#feed-posts #new-post form textarea {
+  width: 80vw;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#posts-list-container ul {
+  width: 50vw;
+  margin: 50px auto;
+}
+
+#posts-list-container ul .container {
+  box-shadow: 0 0 3px black;
+  list-style: none;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+#posts-list-container ul .container a {
+  text-decoration: none;
+}
+
+#posts-list-container ul .container h3 {
+  text-transform: capitalize;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.post-container-content {
+  word-spacing: 0.2rem;
+  letter-spacing: 0.07rem;
+  background-color: #ebe9e9;
+  min-height: 50px;
+  margin: 5px auto;
+  padding: 5px;
+}
+
+.post-comments-list {
+  padding: 0 20px;
+  margin: -40px 0;
+}
+
+.post-comments-list ul li {
+  padding-bottom: 2px;
+  width: 85%;
+}
+
+.post-comments-list .comment-user {
+  text-transform: capitalize;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.post-comments-list .comment-user a {
+  text-decoration: none;
+  color: rgba(114, 133, 241, 0.8);
+}
+
+.post-comments-list .comment-content {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-break: auto;
+}
+
+.post-container-footer {
+  padding-top: 10px;
+  height: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.post-container-footer form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-container-footer form input {
+  border: none;
+  display: block;
+  font-size: 15px;
+  outline: none;
+}
+
+.post-container-footer form input[type="text"] {
+  width: 90%;
+}
+
+.post-container-footer form input[type="submit"] {
+  width: 10%;
+  color: lightskyblue;
+  background: none;
+  cursor: pointer;
+}
