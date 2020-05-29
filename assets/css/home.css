@@ -1,3 +1,18 @@
+#home-container {
+  display: flex;
+}
+
+#home-container #feed-posts {
+  width: 70%;
+  padding: 10px;
+}
+
+#home-container #user-friends {
+  width: 30%;
+  padding: 10px;
+  border-left: 1px solid lightgray;
+}
+
 #feed-posts #new-post {
   display: block;
   width: 80vw;
@@ -9,7 +24,7 @@
 }
 
 #feed-posts #new-post form textarea {
-  width: 80vw;
+  width: 80%;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
