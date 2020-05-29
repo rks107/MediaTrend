@@ -25,14 +25,21 @@
   margin-top: 10px;
 }
 
-#posts-list-container ul .container a {
-  text-decoration: none;
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-#posts-list-container ul .container h3 {
+.container-header h3 {
   text-transform: capitalize;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.container-header a {
+  text-decoration: none;
+  font-size: larger;
+  color: darkblue;
 }
 
 .post-container-content {
@@ -71,6 +78,11 @@
   font-size: 0.85rem;
   font-weight: 600;
   line-break: auto;
+}
+
+.post-comments-list .comment-delete a {
+  text-decoration: none;
+  font-size: small;
 }
 
 .post-container-footer {

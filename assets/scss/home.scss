@@ -20,21 +20,28 @@
         width: 50vw;
         margin: 50px auto;
         .container {
-             box-shadow: 0 0 3px black;
+            box-shadow: 0 0 3px black;
             list-style: none;
             padding: 10px;
             margin-top: 10px;
-
-            a {
-                text-decoration: none;
-            }
-
-            h3 {
-                text-transform: capitalize;
-                padding-bottom: 8px;
-                border-bottom: 1px solid rgba(0,0,0,0.2);
-            }
         }
+    }
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+
+    h3 {
+        text-transform: capitalize;   
+    }
+
+    a{
+        text-decoration: none;
+        font-size: larger;
+        color: darkblue;
     }
 }
 
@@ -71,6 +78,13 @@
         font-size: 0.85rem;
         font-weight: 600;
         line-break: auto;
+    }
+
+    .comment-delete {
+        a {
+            text-decoration: none;
+            font-size: small;
+        }
     }
 }
 
