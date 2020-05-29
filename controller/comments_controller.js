@@ -17,13 +17,16 @@ module.exports.create = async function(req, res) {
 
             post.comments.push(comment);
             post.save();
-
-            res.redirect('/');
+            
+            req.flash('success', 'comment added');
+            return res.redirect('/');
             
         }
 
     } catch(err) {
-        console.log("Error",err)
+        req.flash('error', err);
+        return res.redirect('/');
+        // console.log("Error",err)
     }
 
     // Post.findById(req.body.post , function(err, post){
@@ -56,13 +59,17 @@ module.exports.destroy = async function(req, res) {
             comment.remove();
 
             Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id}}, function(err, post){
+
+                req.flash('success','Comment Deleted!');
                 return res.redirect('back');
             });
         // } else {
         //     res.redirect('back');
         // }
     } catch(err) {
-        console.log("Error",err);
+        req.flash('error', err);
+        return res.redirect('back');
+        // console.log("Error",err);
     }
     // Comment.findById(req.params.id, function(err, comment){
     //     if(comment.user == req.user.id) {
