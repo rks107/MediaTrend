@@ -24,6 +24,20 @@
         });
     }
 
+
+// call the create comment class
+// new PostComments(data.data.post._id);
+
+// new Noty({
+//     theme: 'relax',
+//     text: "Post published!",
+//     type: 'success',
+//     layout: 'topRight',
+//     timeout: 1500
+    
+// }).show();
+
+
     // method to create a post in DOM
     let newPostDom = function(post){
         return $(`<li id="post-${post._id}" class="container">
