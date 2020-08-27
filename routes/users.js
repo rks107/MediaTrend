@@ -22,4 +22,10 @@ router.post('/create-session', passport.authenticate(
 // logged Out
 router.get('/log-out', usersController.destroySession);
 
+
+// google oauth2 stategy 
+router.get('/auth/google', passport.authenticate('google',{scope:['profile', 'email']}));
+//function(request, response, next) { passport.authenticate('google', {scope: ['profile', 'email']})(request, response, next);}
+router.get('/auth/google/callback', passport.authenticate('google',{failureRedirect: '/users/sign-in'}), usersController.createSession);
+
 module.exports = router;
