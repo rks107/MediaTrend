@@ -1,6 +1,8 @@
 const User = require('../models/user');
 const fs = require('fs');
 const path = require('path');
+const queue = require('../config/kue');
+const resetPasswordEmailWorker = require('../workers/reset_password_email_worker');
 
 module.exports.profile = function(req, res) {
 
@@ -64,7 +66,7 @@ module.exports.signIn = function(req, res) {
     }
 
     return res.render('user_sign_in', {
-        title : "Codeial | Sign In"
+        title : "mediaTrend | Sign In"
     })
 }
 
@@ -76,7 +78,7 @@ module.exports.signUp = function(req, res ){
     }
 
     return res.render('user_sign_up', {
-        title : "Codeial | Sign Up"
+        title : "mediaTrend | Sign Up"
     })
 }
 
@@ -119,4 +121,37 @@ module.exports.destroySession = function(req,res) {
     req.logout();
     req.flash('success', 'You have logged out');
     return res.redirect('/');
+}
+
+//reset password
+module.exports.resetPassword = function(req, res) {
+    
+    return res.render('reset-password',{
+       title: 'mediaTrend | reset-password'
+    });
+}
+
+//generate Token for resetting password
+module.exports.generateToken = async function(req, res) {
+     try {
+        let user = await User.findOne({email: req.body.email});
+        if(user) {
+            let job = queue.create('emails', user).save(function(err){
+                   if(err){ 
+                        console.log('Error in sendting it to the queue');
+                        return;
+                    }
+                console.log('job enqueued', job.id);
+                resetPasswordEmailWorker;
+             });
+            // console.log('user found', user);
+            res.redirect('/users/sign-in');
+        } else {
+            console.log('User not found');
+        }
+     } catch(err) {
+        console.log('Error in finding user', err);
+        return res.redirect('/');
+     }
+    // return res.render()
 }
