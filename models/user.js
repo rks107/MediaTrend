@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
     avatar: {
         type: String
     },
+    resetLink: {
+        data: String,
+        default: ''
+    },
     friendship: [
         {
             type: mongoose.Types.ObjectId,
